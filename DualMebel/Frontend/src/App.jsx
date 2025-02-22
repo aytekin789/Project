@@ -33,8 +33,6 @@ export default function App() {
   return (
     <HelmetProvider>
       <Maincontext.Provider value={datas}>
-
-
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainLayout />}>
@@ -53,9 +51,7 @@ export default function App() {
               <Route index element={<AdminProduct />} />
               <Route path="add" element={<Add />} />
               <Route path="edit/:id" element={<Edit/>}/>
-              
-
-            </Route>
+             </Route>
           </Routes>
         </BrowserRouter>
       </Maincontext.Provider>

@@ -7,7 +7,7 @@ const Detail = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
+    fetch(`http://localhost:3000/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setDetail(data);

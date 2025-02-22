@@ -9,11 +9,13 @@ import Detail from "./Pages/Main/Detail/Detail";
 import Admin from "./Layout/Admin";
 import AdminProduct from "./Pages/Admin/AdminProduct/AdminProduct";
 import Add from "./Pages/Admin/Add/Add";
+import Edit from "./Pages/Admin/Edit/Edit";
 import { HelmetProvider } from "react-helmet-async";
 import NoPage from "./Pages/NoPage";
 import Maincontext from "./context/mainContext";
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import About from "./Pages/Main/About/About";
 export default function App() {
   const [data, setData] = useState([])
 
@@ -41,6 +43,7 @@ export default function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="basket" element={<Basket />} />
               <Route path="wishlist" element={<Wishlist />} />
+              <Route path="about" element={<About/>}/>
               <Route path=":id" element={<Detail />} />
               {/* <Route path="*" element={<NoPage/>} /> */}
             </Route>
@@ -49,6 +52,7 @@ export default function App() {
             <Route path="/admin" element={<Admin />}>
               <Route index element={<AdminProduct />} />
               <Route path="add" element={<Add />} />
+              <Route path="edit/:id" element={<Edit/>}/>
               
 
             </Route>

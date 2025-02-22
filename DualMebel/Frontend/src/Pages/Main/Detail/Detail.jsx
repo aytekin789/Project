@@ -24,7 +24,7 @@ const Detail = () => {
         <img src={detail.image} alt={detail.title} style={{ width: "300px" }} />
         <h1>{detail.title}</h1>
         <p>{detail.description}</p>
-        <h2>{detail.price}$</h2>
+        <h2>{detail.price}AZN</h2>
       </div>
     </>
   );

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom';
+import "./Product.css"
 
 const Products = () => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch("http://localhost:3000/products/")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);

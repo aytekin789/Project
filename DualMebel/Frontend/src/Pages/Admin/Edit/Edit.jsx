@@ -13,7 +13,7 @@ export default function UpdatePage() {
 
     useEffect(() => {
         
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`http://localhost:3000/products/${id}`)
             .then((res) => res.json())
             .then((data) => {
                 setProduct(data);
@@ -23,7 +23,7 @@ export default function UpdatePage() {
 
     async function updateProduct(updatedObj) {
         try {
-            await axios.put(`https://fakestoreapi.com/products/${id}`, updatedObj);
+            await axios.put(`http://localhost:3000/products/${id}`, updatedObj);
             navigate("/admin"); 
         } catch (error) {
             console.error("Məhsulu yeniləyərkən xəta baş verdi:", error);

@@ -20,7 +20,7 @@ export default function App() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products").then(res => {
+    axios.get("http://localhost:3000/products/").then(res => {
       console.log(res.data)
       setData(res.data)
 

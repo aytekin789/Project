@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 export default function AdminProduct() {
     const[product, setProduct] = useState([])
    function GetData (){
-       fetch("https://fakestoreapi.com/products")
+       fetch("http://localhost:3000/products")
        .then((res)=>res.json())
        .then(data=>setProduct(data))
    }
@@ -13,7 +13,7 @@ export default function AdminProduct() {
       }, []);
 
       function deleteItemById(id) {
-        fetch("https://fakestoreapi.com/products" + id, {
+        fetch("http://localhost:3000/products" + id, {
           method: "DELETE",
         }).then(() => GetData());
       }

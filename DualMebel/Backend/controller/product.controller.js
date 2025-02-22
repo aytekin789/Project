@@ -23,8 +23,8 @@ const ProductController={
     },
     Post:async(req,res)=>{
         try{
-            const {name,price,image}=req.body
-            const NewProduct=new Product({name,price,image})
+            const {image,title,description,category,price}=req.body
+            const NewProduct=new Product({image,title,description,category,price})
              await NewProduct.save()
              res.send(NewProduct)
 
@@ -45,8 +45,8 @@ const ProductController={
     edit: async (req, res) => {
         try {
            const {id}=req.params
-           const {name,price,image}=req.body
-           const target= await Product.findByIdAndUpdate(id,{name,price,image})  
+           const {image,title,description,category,price}=req.body
+           const target= await Product.findByIdAndUpdate(id,{image,title,description,category,price})  
         res.send(target)
         } catch (error) {
             res.send("item is not a fount")

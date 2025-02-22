@@ -1,11 +1,15 @@
 const mongoose=require("mongoose")
 const productSchema = new mongoose.Schema({
 
-  name: String,
+  image: String,
 
-  price: Number,
+  title: String,
 
-  image: String
+  description: String,
+
+  category: String,
+
+  price: Number
 
 });
 const Product = mongoose.model('product_imt', productSchema);

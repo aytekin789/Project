@@ -41,7 +41,7 @@ export default function AdminProduct() {
                 </thead>
                 <tbody>
                     {product.map((x) => (
-                        <tr key={x.id}>
+                        <tr key={x._id}>
                             <td style={{ border: "solid gray" }}>{x.image}</td>
                             <td style={{ border: "solid gray" }}>{x.title}</td>
                             <td style={{ border: "solid gray" }}>{x.description}</td>
@@ -49,7 +49,7 @@ export default function AdminProduct() {
                             <td style={{ border: "solid gray" }}>{x.price} AZN</td>
                             <td style={{ border: "solid gray" }}>
                                 <button
-                                    onClick={() => deleteItemById(x.id)}
+                                    onClick={() => deleteItemById(x._id)}
                                     style={{ backgroundColor: "red" }}
                                 >
                                     DELETE
@@ -57,7 +57,7 @@ export default function AdminProduct() {
                             </td>
                             <td style={{ border: "solid gray" }}>
                                 <button
-                                    onClick={() => navigate(`/edit/${x.id}`)} 
+                                    onClick={() => navigate(`/edit/${x._id}`)} 
                                     style={{ backgroundColor: "green" }}
                                 >
                                     EDIT

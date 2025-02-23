@@ -5,6 +5,7 @@ import Products from "./Pages/Main/Products/Products";
 import Contact from "./Pages/Main/Contact/Contact";
 import Basket from "./Pages/Main/Basket/Basket";
 import Wishlist from "./Pages/Main/Wishlist/Wishlist";
+import About from "./Pages/Main/About/About"
 import Detail from "./Pages/Main/Detail/Detail";
 import Admin from "./Layout/Admin";
 import AdminProduct from "./Pages/Admin/AdminProduct/AdminProduct";
@@ -134,6 +135,7 @@ export default function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="basket" element={<Basket />} />
               <Route path="wishlist" element={<Wishlist />} />
+              <Route path="about" element={<About/>} />
               <Route path=":id" element={<Detail />} />
               {/* <Route path="*" element={<NoPage/>} /> */}
             </Route>

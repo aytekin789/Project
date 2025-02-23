@@ -45,15 +45,22 @@ const Home = () => {
       <div className="cards__all">
         {data.map((item,index)=>{
           return(
-            <li>
-              {item.title}
-              <button onClick={()=>{
+           <>
+             <div className="col-3">
+              <div>
+                <img src={item.image} alt="" /></div>
+              <div>
+                {item.title}
+                <span>{item.price}AZN</span>
+                </div>
+                   <button onClick={()=>{
                 AddToBasket(item)
-              }}>basket</button>
+              }}><i className="fa-solid fa-cart-shopping"></i></button>
               <button onClick={()=>{
                 addtoWishList(item)
-              }}>fav</button>
-            </li>
+              }}><i className="fa-solid fa-heart"></i></button>
+            </div>
+           </>
           )
         })}
       </div>

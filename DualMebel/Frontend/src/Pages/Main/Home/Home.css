@@ -9,6 +9,9 @@
   padding: 10px;
   border-radius: 5px;
 }
+p {
+  color: white !important;
+}
 
 .cards__all {
   display: flex;

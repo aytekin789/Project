@@ -19,7 +19,7 @@
     text-decoration: none;
   }
   .logo a h1 {
-    color: white;
+    color: white !important;
   }
   
   .navbar nav ul {

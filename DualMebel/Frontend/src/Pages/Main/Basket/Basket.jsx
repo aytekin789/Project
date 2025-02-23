@@ -24,8 +24,9 @@ const Basket = () => {
               <img src={item.product.image} alt="" />
               
               <div className="basket-item-info">
-                <h4>{item.product.title}</h4>
-                <span>{item.product.price} AZN</span>
+              <div>{item.product.title}:<strong>Qiyməti:</strong>{item.product.price} AZN</div>
+             <div> <strong>Ümumi qiymət:</strong> {item.totalPrice} </div>
+             <div><strong>say:</strong> {item.count}ədəd</div>
               </div>
               
               <div className="basket-buttons">

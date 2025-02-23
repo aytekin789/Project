@@ -136,7 +136,7 @@ export default function App() {
               <Route path="basket" element={<Basket />} />
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="about" element={<About/>} />
-              <Route path=":id" element={<Detail />} />
+              <Route path="detail/:id" element={<Detail />} />
               {/* <Route path="*" element={<NoPage/>} /> */}
             </Route>
 

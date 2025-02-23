@@ -3,14 +3,15 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom';
 import "./Product.css"
 
+
 const Products = () => {
   const [product, setProduct] = useState([]);
-
   useEffect(() => {
     fetch("http://localhost:3000/products/")
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
+  
   return (
    <>
    <Helmet><title>PRODUCTS</title></Helmet>

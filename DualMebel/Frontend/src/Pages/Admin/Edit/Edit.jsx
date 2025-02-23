@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function UpdatePage() {
+export default function Edit() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function UpdatePage() {
             });
     }, [id]);
 
-    async function updateProduct(updatedObj) {
+    async function Edit(updatedObj) {
         try {
             await axios.put(`http://localhost:3000/products/${id}`, updatedObj);
             navigate("/admin"); 
@@ -56,7 +56,7 @@ export default function UpdatePage() {
                         price: Yup.number().typeError('Price must be a number').required('Price is required'),
                         category: Yup.string().required('Category is required'), 
                     })}
-                    onSubmit={(values) => updateProduct(values)}
+                    onSubmit={(values) => Edit(values)}
                 >
                     <Form className='d-flex flex-column w-50 p-4 border rounded shadow'>
                         <label htmlFor="title" className="mb-1">Title</label>

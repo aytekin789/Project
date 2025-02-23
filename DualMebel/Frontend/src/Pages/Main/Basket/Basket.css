@@ -1,0 +1,138 @@
+.basket-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  .empty-basket {
+    text-align: center;
+    padding: 80px 20px;
+    font-size: 22px;
+    color: #6c757d;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .empty-basket h2 {
+    font-size: 28px;
+    color: #a83279;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .empty-basket p {
+    color: #8c285e !important;
+    font-size: 18px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+  }
+  
+  .empty-basket a {
+    display: inline-block;
+    text-decoration: none;
+    background: #a83279;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: 0.3s;
+  }
+  
+  .empty-basket a:hover {
+    background: #8c285e;
+  }
+  
+ 
+  .basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .basket-item:hover {
+    transform: scale(1.02);
+  }
+  
+  
+  .basket-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+ 
+  .basket-item-info {
+    flex: 1;
+    margin-left: 15px;
+  }
+  
+  .basket-item-info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .basket-item-info span {
+    display: block;
+    font-size: 16px;
+    color: #a83279;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  
+  .basket-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .basket-buttons button {
+    background: #a83279;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 16px;
+  }
+  
+  .basket-buttons button:hover {
+    background: #8c285e;
+  }
+  
+  .basket-buttons .fa-trash {
+    color: red;
+  }
+  
+  .basket-buttons .fa-trash:hover {
+    color: darkred;
+  }
+  
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  

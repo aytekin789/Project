@@ -1,0 +1,35 @@
+.card {
+    max-width: 600px;
+    margin: 20px auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 16px;
+}
+
+.card p {
+    font-size: 16px;
+    color: #666;
+    margin: 16px;
+    line-height: 1.5;
+}
+
+.card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #28a745 !important; 
+    margin: 16px;
+}

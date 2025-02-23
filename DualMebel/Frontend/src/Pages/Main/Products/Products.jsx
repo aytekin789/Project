@@ -28,7 +28,7 @@ const Products = () => {
                   <p>{x.description}</p>
                 </div>
                 <Link to={`/detail/${x._id}`}>
-                  <button style={{ backgroundColor: "#a01111" }}>Detail</button>
+                  <button style={{ backgroundColor: "#a01111" }}><i class="fa-solid fa-circle-info"></i></button>
                 </Link>
               </div>
             </div>

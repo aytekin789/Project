@@ -4,7 +4,7 @@ import "./Footer.css"; // Stil əlavə etmək üçün
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-content">
+      <div className="container footer-content">
         <div className="footer-logo">
           <h2>Dual Mebel</h2>
           <p>Ən Yaxşı Mebel Seçimləri</p>
@@ -17,6 +17,8 @@ const Footer = () => {
             <li><a href="/products">Məhsullar</a></li>
             <li><a href="/about">Haqqımızda</a></li>
             <li><a href="/contact">Əlaqə</a></li>
+            <li><a href="/login">Giriş</a></li>
+            <li><a href="/register">Qeydiyyat</a></li>
           </ul>
         </div>
 

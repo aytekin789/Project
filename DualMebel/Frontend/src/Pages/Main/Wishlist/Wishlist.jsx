@@ -28,6 +28,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Maincontext from '../../../context/mainContext';
 import './Wishlist.css';
+import { Toaster } from 'react-hot-toast';
 
 const Wishlist = () => {
   const { wishList, removeFromWishList } = useContext(Maincontext);
@@ -57,6 +58,8 @@ const Wishlist = () => {
           ))
         )}
       </div>
+      <Toaster/>
+      bir dene o edit 
     </>
   );
 }

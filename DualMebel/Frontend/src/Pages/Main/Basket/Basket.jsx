@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Maincontext from '../../../context/mainContext';
 import "./Basket.css"
+import  { Toaster } from 'react-hot-toast';
 
 const Basket = () => {
   const { basket, decrease, increase, removeFromBasket } = useContext(Maincontext);
@@ -45,6 +46,7 @@ const Basket = () => {
           ))
         )}
       </div>
+      <Toaster/>
     </>
   );
 }

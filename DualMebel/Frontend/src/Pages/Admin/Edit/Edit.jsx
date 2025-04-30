@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+
 export default function Edit() {
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -33,7 +34,7 @@ export default function Edit() {
     if (loading) {
         return <div className="spinner-border text-success" role="status"></div>;
     }
-
+        
     return (
         <>
             <Helmet>

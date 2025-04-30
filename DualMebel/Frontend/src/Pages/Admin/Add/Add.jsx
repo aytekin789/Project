@@ -1,22 +1,30 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
+import React, { useContext } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import Maincontext from '../../../context/mainContext';
 
-function creatElement(obj) {
+function creatElement(obj, setData, data) {
   const requestOptions = {
     method: "POST",
-    Headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json" }, // headers düzəldildi
     body: JSON.stringify(obj),
   };
-  fetch("http://localhost:3000/products/", requestOptions).then((res) =>
-    res.json()
-  );
+
+  fetch("http://localhost:3000/products/", requestOptions)
+    .then((res) => res.json()) // JSON-a çevirmək üçün gözləyirik
+    .then((newData) => {
+      setData([...data, newData]); // Yeni məhsulu mövcud array-ə əlavə edirik
+      console.log("Yeni data:", newData);
+    })
+    .catch((error) => console.error("Xəta baş verdi:", error)); // Error handling
 }
 
 const Add = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  const { data, setData } = useContext(Maincontext); // Context-dən data və setData alırıq
+
   return (
     <>
       <Helmet>
@@ -30,10 +38,10 @@ const Add = () => {
           title: Yup.string().required("Required"),
           description: Yup.string().required("Required"),
           category: Yup.string().required("Required"),
-          price: Yup.string().required("Required"),
+          price: Yup.number().required("Required"),
         })}
         onSubmit={(values) => {
-          creatElement(values);
+          creatElement(values, setData, data); // setData və data-ni göndəririk
           navigate("/admin");
         }}
       >
@@ -41,7 +49,7 @@ const Add = () => {
           <label htmlFor="image">IMAGE</label>
           <Field name="image" type="text" />
           <ErrorMessage name="image" />
-          
+
           <label htmlFor="title">TITLE</label>
           <Field name="title" type="text" />
           <ErrorMessage name="title" />
@@ -65,4 +73,4 @@ const Add = () => {
   );
 }
 
-export default Add
+export default Add;

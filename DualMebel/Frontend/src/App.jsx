@@ -15,42 +15,54 @@ import NoPage from "./Pages/NoPage";
 import Maincontext from "./context/mainContext";
 import Edit from './Pages/Admin/Edit/Edit'
 import { useEffect, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
+
 import axios from 'axios'
+import Login from "./Pages/Main/LoginRegister/Login";
+import Register from "./Pages/Main/LoginRegister/Register";
 export default function App() {
   const [data, setData] = useState([])
   const [wishList, setWishList] = useState(localStorage.getItem("wish") ? JSON.parse(localStorage.getItem("wish")) : [])
-
   const [basket, setBasket] = useState(localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : [])
+  const [search,setSearch]=useState([])
   useEffect(() => {
     axios.get("http://localhost:3000/products").then(res => {
       console.log(res.data)
       setData(res.data)
+      setSearch(res.data)
+     
 
     })
   }, [])
 
   function AddToBasket(product) {
-    const target = basket.find((item) => item.product.id == product.id)
+    const target = basket.find((item) => item.product._id == product._id);
+
     if (target) {
-      target.count += 1,
-        target.totalPrice = target.product.price * target.count
-      setBasket([...basket])
-      localStorage.setItem("basket", JSON.stringify([...basket]))
+        if (target.count >= 5) {
+            toast.error("You can add max 5 items of this product!");
+            return; // Əgər məhsulun sayı 5-dirsə, funksiyanı dayandırırıq.
+        }
 
-    }
-    else {
-      const newBasketItem = {
-        count: 1,
-        totalPrice: product.price,
-        id: product.id,
-        product: product
-      }
-      setBasket([...basket, newBasketItem])
-      localStorage.setItem("basket", JSON.stringify([...basket, newBasketItem]))
-      toast.success("added to basket")
+        target.count += 1;
+        target.totalPrice = target.product.price * target.count;
+        setBasket([...basket]);
+        localStorage.setItem("basket", JSON.stringify([...basket]));
+        toast.success("Added to basket");
+    } else {
+        const newBasketItem = {
+            count: 1,
+            totalPrice: product.price,
+            id: product._id,
+            product: product,
+        };
 
+        setBasket([...basket, newBasketItem]);
+        localStorage.setItem("basket", JSON.stringify([...basket, newBasketItem]));
+        toast.success("Added to basket");
     }
-  }
+}
+
 
 
   const decrease = (product) => {
@@ -60,6 +72,7 @@ export default function App() {
       target.totalPrice = target.product.price * target.count
       setBasket([...basket])
       localStorage.setItem("basket", JSON.stringify([...basket]))
+      toast.success("decresed product")
     }
   }
 
@@ -67,45 +80,90 @@ export default function App() {
 
 
   function increase(product) {
-    const target = basket.find((item) => item.id == product.id)
-    console.log(target.product.id)
-    target.count += 1
-    target.totalPrice = target.product.price * target.count
-    setBasket([...basket])
-    localStorage.setItem("basket", JSON.stringify([...basket]))
+    const target = basket.find((item) => item.id == product.id);
 
-  }
+    if (target.count >= 5) {
+        toast.error("You can add max 5 items of this product!");
+        return; // Əgər sayı 5-dirsə, artırmağa icazə vermirik
+    }
+
+    target.count += 1;
+    target.totalPrice = target.product.price * target.count;
+    setBasket([...basket]);
+    localStorage.setItem("basket", JSON.stringify([...basket]));
+    toast.success("Increased product");
+}
+
 
   const removeFromBasket = (product) => {
-    const target = basket.find(item => item.id == product.id)
+    const target = basket.find(item => item._id == product._id)
     basket.splice(basket.indexOf(target), 1)
     setBasket([...basket])
     localStorage.setItem("basket", JSON.stringify([...basket]))
   }
 
   const addtoWishList = (product) => {
-    const target = wishList.find(item => item.id == product.id)
+    const target = wishList.find(item => item._id == product._id)
     if (target) {
-      alert("wishListinizde Movcuddur")
+      toast.error("wishListinizde Movcuddur")
     }
     else {
       setWishList([...wishList, product])
       localStorage.setItem("wish", JSON.stringify([...wishList, product]))
-      alert("added to wishList")
+      toast.success("added to wishList")
     }
 
   }
 
 
   const removeFromWishList = (product) => {
-    const target = wishList.find(item => item.id == product.id)
+    const target = wishList.find(item => item._id == product._id)
     wishList.splice(wishList.indexOf(target), 1)
     setWishList([...wishList])
     localStorage.setItem("wish", JSON.stringify([...wishList]))
-    alert("deleted data")
+   toast.error("deleted data form your favorite")
 
   }
 
+
+
+  const handlerSort = (e) => {
+    let sorting = e.target.value;
+    
+    if (sorting === "df") {
+      setData([...data]); // Dəyişiklik etmədən datanı yenidən yükləyirik
+    } 
+    else if (sorting === "az") {
+      const sortedData = [...data].sort((a, b) => a.title.localeCompare(b.title));
+      setData(sortedData);
+    } 
+    else if (sorting === "za") {
+      const sortedData = [...data].sort((a, b) => b.title.localeCompare(a.title));
+      setData(sortedData);
+    } 
+    else if (sorting === "09") {
+      const sortedData = [...data].sort((a, b) => a.price - b.price);
+      setData(sortedData);
+    } 
+    else if (sorting === "90") {
+      const sortedData = [...data].sort((a, b) => b.price - a.price);
+      setData(sortedData);
+    }
+  };
+
+
+  const handlerSearch=(searchValue)=>{
+    if(searchValue==''){
+      setData([...search])
+    }else{
+      setData([...search.filter(item=>item.title.toLowerCase().trim().includes(searchValue))])
+    }
+  }
+
+
+ 
+
+  
 
 
 
@@ -119,7 +177,15 @@ export default function App() {
     removeFromBasket,
     addtoWishList,
     wishList,
-    removeFromWishList
+    removeFromWishList,
+   
+    setData,
+    handlerSort,
+    handlerSearch,
+
+
+    
+    
 
   }
   return (
@@ -137,6 +203,8 @@ export default function App() {
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="about" element={<About/>} />
               <Route path="detail/:id" element={<Detail />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
               {/* <Route path="*" element={<NoPage/>} /> */}
             </Route>
 
@@ -148,8 +216,10 @@ export default function App() {
 
             </Route>
           </Routes>
+          
         </BrowserRouter>
       </Maincontext.Provider>
+      <Toaster/>
     </HelmetProvider>
   );
 }

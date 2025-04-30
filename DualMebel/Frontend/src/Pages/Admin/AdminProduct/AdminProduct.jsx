@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom"; 
-
+import Maincontext from "../../../context/mainContext";
+import "./AdminProduct.css"
 export default function AdminProduct() {
     const [product, setProduct] = useState([]);
+    const {data}=useContext(Maincontext)
     const navigate = useNavigate(); 
 
     function GetData() {
@@ -40,7 +42,7 @@ export default function AdminProduct() {
                     </tr>
                 </thead>
                 <tbody>
-                    {product.map((x) => (
+                    {data.map((x) => (
                         <tr key={x._id}>
                             <td style={{ border: "solid gray" }}>{x.image}</td>
                             <td style={{ border: "solid gray" }}>{x.title}</td>
@@ -57,7 +59,7 @@ export default function AdminProduct() {
                             </td>
                             <td style={{ border: "solid gray" }}>
                                 <button
-                                    onClick={() => navigate(`/edit/${x._id}`)} 
+                                    onClick={() => navigate(`/admin/edit/${x._id}`)} 
                                     style={{ backgroundColor: "green" }}
                                 >
                                     EDIT

@@ -1,0 +1,47 @@
+/* AdminProduct.css */
+
+table {
+    width: 100%; /* Full width of the container */
+    border-collapse: collapse; /* Remove space between table cells */
+    margin-top: 20px; /* Space above the table */
+}
+
+thead {
+    background-color: #333; /* Dark background for the header */
+    color: white; /* White text color for the header */
+}
+
+th, td {
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Align text to the left */
+    border: 1px solid #ccc; /* Light border for cells */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+tbody tr:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+button {
+    padding: 5px 10px; /* Padding inside buttons */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners */
+    color: white; /* White text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+button:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
+
+button[style*="background-color: red"] {
+    background-color: red; /* Red background for delete button */
+}
+
+button[style*="background-color: green"] {
+    background-color: green; /* Green background for edit button */
+}
